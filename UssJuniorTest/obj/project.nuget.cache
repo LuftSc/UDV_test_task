@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "2bkB7TrzvhgPOmKMWjlHJ2TIimC8K1qc7lGHB1h85B05Sa1g1j8hdR0n2birbaJ5FD+ejeytzFQ8LT5bbSdWNg==",
+  "dgSpecHash": "S2JkfBVH7LnZxLjBzhgeWyL0ffzqYT0mzbvdnZjzZjXyWzLT76+XCabVPDO0JnWvdTXs9Bp9KB5HvtPTb/8tDg==",
   "success": true,
   "projectFilePath": "H:\\UDV\\UDV_test_task\\UssJuniorTest\\UssJuniorTest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\temap\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "C:\\Users\\temap\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
     "C:\\Users\\temap\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
     "C:\\Users\\temap\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",

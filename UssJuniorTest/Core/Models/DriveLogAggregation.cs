@@ -2,8 +2,9 @@
 {
     public class DriveLogAggregation : Model
     {
-        public DriveLogAggregation(Person person, Car car, DriveLog driveLog) 
-        { 
+        public DriveLogAggregation(long id, Person person, Car car, DriveLog driveLog) 
+        {
+            Id = id;
             Driver = person;
             Car = car;
 

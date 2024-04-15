@@ -28,7 +28,7 @@ namespace UssJuniorTest.Services
                 var person = _personRepository.Get(driveLog.PersonId);
                 var car = _carRepository.Get(driveLog.CarId);
 
-                result.Add(new DriveLogAggregation(person, car, driveLog));
+                result.Add(new DriveLogAggregation(result.Count, person, car, driveLog));
             }
 
             return result;

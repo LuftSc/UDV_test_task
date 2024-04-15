@@ -5,7 +5,7 @@ using UssJuniorTest.Services;
 namespace UssJuniorTest.Controllers;
 
 [Route("api/driveLog")]
-public class DriveLogController : Controller
+public class DriveLogController : ControllerBase
 {
     private readonly IDriveLogService _driveLogService;
     public DriveLogController(IDriveLogService driveLogService)
@@ -18,6 +18,6 @@ public class DriveLogController : Controller
     {
         var driveLogsAggregation = _driveLogService.GetDriveLogsInTimeInterval(startTime, endTime);
 
-        return driveLogsAggregation.Select(d => new DriveLogResponse(d.Driver, d.Car, d.DrivingTime)).ToList();
+        return driveLogsAggregation.Select(d => new DriveLogResponse(d.Id, d.Driver, d.Car, d.DrivingTime)).ToList();
     }
 }
