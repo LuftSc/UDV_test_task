@@ -1,6 +1,6 @@
 ﻿using UssJuniorTest.Core.Models;
 
-namespace UssJuniorTest.Core;
+namespace UssJuniorTest.Abstractions;
 
 /// <summary>
 /// Репозиторий для операций с данными.

@@ -1,5 +1,7 @@
-﻿using UssJuniorTest.Infrastructure.Repositories;
+﻿using UssJuniorTest.Abstractions;
+using UssJuniorTest.Infrastructure.Repositories;
 using UssJuniorTest.Infrastructure.Store;
+using UssJuniorTest.Services;
 
 namespace UssJuniorTest;
 
@@ -11,5 +13,8 @@ public static class ServiceCollectionExtensions
 
         services.AddScoped<CarRepository>();
         services.AddScoped<PersonRepository>();
+        services.AddScoped<DriveLogRepository>();
+
+        services.AddScoped<IDriveLogService, DriveLogService>();
     }
 }
