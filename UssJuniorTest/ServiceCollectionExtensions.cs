@@ -1,4 +1,5 @@
-﻿using UssJuniorTest.Infrastructure.Repositories;
+﻿using UssJuniorTest.Abstractions;
+using UssJuniorTest.Infrastructure.Repositories;
 using UssJuniorTest.Infrastructure.Store;
 using UssJuniorTest.Services;
 

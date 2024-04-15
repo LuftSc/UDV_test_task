@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UssJuniorTest.Abstractions;
 using UssJuniorTest.Contracts;
-using UssJuniorTest.Services;
 
 namespace UssJuniorTest.Controllers;
 
@@ -14,10 +14,17 @@ public class DriveLogController : ControllerBase
     }
 
     [HttpGet]
-    public List<DriveLogResponse> GetDriveLogsAggregation(DateTime startTime, DateTime endTime)
+    public List<DriveLogResponse> GetDriveLogsAggregation(
+        DateTime startTime, 
+        DateTime endTime, 
+        string carModel, 
+        string driverName)
     {
-        var driveLogsAggregation = _driveLogService.GetDriveLogsInTimeInterval(startTime, endTime);
+        var driveLogsAggregation = _driveLogService
+            .GetLogsAggregation(startTime, endTime, carModel, driverName);
 
-        return driveLogsAggregation.Select(d => new DriveLogResponse(d.Id, d.Driver, d.Car, d.DrivingTime)).ToList();
+        return driveLogsAggregation
+            .Select(d => new DriveLogResponse(d.Id, d.Driver, d.Car, d.DrivingTime))
+            .ToList();
     }
 }

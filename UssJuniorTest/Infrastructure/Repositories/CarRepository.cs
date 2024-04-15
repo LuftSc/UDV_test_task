@@ -1,4 +1,4 @@
-﻿using UssJuniorTest.Core;
+﻿using UssJuniorTest.Abstractions;
 using UssJuniorTest.Core.Models;
 using UssJuniorTest.Infrastructure.Store;
 

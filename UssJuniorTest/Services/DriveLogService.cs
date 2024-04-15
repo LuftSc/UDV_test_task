@@ -1,4 +1,5 @@
-﻿using UssJuniorTest.Core.Models;
+﻿using UssJuniorTest.Abstractions;
+using UssJuniorTest.Core.Models;
 using UssJuniorTest.Infrastructure.Repositories;
 
 namespace UssJuniorTest.Services
@@ -18,7 +19,7 @@ namespace UssJuniorTest.Services
             _personRepository = personRepository;
         }
 
-        public List<DriveLogAggregation> GetDriveLogsInTimeInterval(DateTime startTime, DateTime endTime)
+        private IEnumerable<DriveLogAggregation> GetDriveLogsInTimeInterval(DateTime startTime, DateTime endTime)
         {
             var result = new List<DriveLogAggregation>();
             var allDriveLogs = _driveLogRepository.GetAll();
@@ -32,6 +33,36 @@ namespace UssJuniorTest.Services
             }
 
             return result;
+        }
+
+        public IEnumerable<DriveLogAggregation> GetLogsAggregation(
+            DateTime startTime, 
+            DateTime endTime, 
+            string carModel = "", 
+            string driverName = "") 
+        {
+            var driveLogs = GetDriveLogsInTimeInterval(startTime, endTime);
+
+            driveLogs = FilterLogs(driveLogs, carModel, driverName);
+            return driveLogs;
+        }
+
+        public static IEnumerable<DriveLogAggregation> FilterLogs(IEnumerable<DriveLogAggregation> driveLogs, string carModel, string driverName)
+        {
+            if (!string.IsNullOrEmpty(carModel))
+            {
+                driveLogs = driveLogs
+                    .Where(
+                    d => d.Car.Model.Contains(carModel) 
+                    || d.Car.Manufacturer.Contains(carModel));
+            }
+            if (!string.IsNullOrEmpty(driverName))
+            {
+                driveLogs = driveLogs
+                    .Where(d => d.Driver.Name.Contains(driverName));
+            }
+
+            return driveLogs;
         }
     }
 }
