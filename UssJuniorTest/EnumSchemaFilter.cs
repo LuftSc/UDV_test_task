@@ -4,6 +4,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace UssJuniorTest
 {
+    /// <summary>
+    /// Класс для отображение user-friendly Enum'ов в Сваггере.
+    /// </summary>
     public class EnumSchemaFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)

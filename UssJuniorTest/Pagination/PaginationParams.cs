@@ -1,5 +1,8 @@
-﻿namespace UssJuniorTest
+﻿namespace UssJuniorTest.Pagination
 {
+    /// <summary>
+    /// Класс для хранения параметров пагинации.
+    /// </summary>
     public class PaginationParams
     {
         private const int _maxPageSize = 15;

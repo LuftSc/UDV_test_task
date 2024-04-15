@@ -1,5 +1,8 @@
 ﻿namespace UssJuniorTest.Core.Models
 {
+    /// <summary>
+    /// Класс для удобного представления времени вождения в днях,часах и минутах.
+    /// </summary>
     public class DrivingTime
     {
         public int Days { get; }

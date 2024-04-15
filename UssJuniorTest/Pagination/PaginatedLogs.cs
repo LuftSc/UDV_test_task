@@ -1,8 +1,11 @@
 ﻿using UssJuniorTest.Contracts;
 using UssJuniorTest.Core.Models;
 
-namespace UssJuniorTest
+namespace UssJuniorTest.Pagination
 {
+    /// <summary>
+    /// Класс, реализующий пагинацию
+    /// </summary>
     public class PaginatedLogs
     {
         public PaginatedLogs(IEnumerable<DriveLogResponse> items, int count, int pageNumber, int logsPerPage)

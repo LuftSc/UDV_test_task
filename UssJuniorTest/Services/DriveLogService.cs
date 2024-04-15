@@ -2,9 +2,13 @@
 using UssJuniorTest.Contracts;
 using UssJuniorTest.Core.Models;
 using UssJuniorTest.Infrastructure.Repositories;
+using UssJuniorTest.Pagination;
 
 namespace UssJuniorTest.Services
 {
+    /// <summary>
+    /// Класс-сервис, реализующий логику по предоставлении информации о водителе, машине и времени его вождения.
+    /// </summary>
     public class DriveLogService : IDriveLogService
     {
         private readonly DriveLogRepository _driveLogRepository;

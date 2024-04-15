@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UssJuniorTest.Abstractions;
 using UssJuniorTest.Contracts;
+using UssJuniorTest.Pagination;
 using static UssJuniorTest.Services.DriveLogService;
 
 namespace UssJuniorTest.Controllers;
@@ -13,6 +14,19 @@ public class DriveLogController : ControllerBase
     {
         _driveLogService = driveLogService;
     }
+
+    /// <summary>
+    /// Получить записи о водителе(возраст и имя), 
+    /// машине(модель,производитель) и времени вождения 
+    /// машины в указанном временной диапазоне.
+    /// </summary>
+    /// <param name="startTime">Начальная дата</param>
+    /// <param name="endTime">Конечная дата</param>
+    /// <param name="carModel">Модель машины</param>
+    /// <param name="driverName">Имя водителя</param>
+    /// <param name="sortOrder">Параметр сортировки</param>
+    /// <param name="pp">Параметры для пагинации</param>
+    /// <returns></returns>
 
     [HttpGet]
     public PaginatedLogs GetDriveLogsAggregation(
