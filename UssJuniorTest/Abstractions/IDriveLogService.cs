@@ -5,11 +5,13 @@ namespace UssJuniorTest.Abstractions
 {
     public interface IDriveLogService
     {
-        public IEnumerable<DriveLogAggregation> GetLogsAggregation(
+        public PaginatedLogs GetLogsAggregation(
             DateTime startTime,
             DateTime endTime,
             string carModel = "",
             string driverName = "",
-            SortState sortOrder = SortState.DriverNameAsc);
+            SortState sortOrder = SortState.DriverNameAsc,
+            int page = 1,
+            int logsPerPage = 10);
     }
 }

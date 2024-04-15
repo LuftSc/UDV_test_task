@@ -1,4 +1,5 @@
 ﻿using UssJuniorTest.Abstractions;
+using UssJuniorTest.Contracts;
 using UssJuniorTest.Core.Models;
 using UssJuniorTest.Infrastructure.Repositories;
 
@@ -48,23 +49,26 @@ namespace UssJuniorTest.Services
             return result;
         }
 
-        public IEnumerable<DriveLogAggregation> GetLogsAggregation(
+        public PaginatedLogs GetLogsAggregation(
             DateTime startTime, 
             DateTime endTime, 
             string carModel = "", 
             string driverName = "",
-            SortState sortOrder = SortState.DriverNameAsc) 
+            SortState sortOrder = SortState.DriverNameAsc,
+            int page = 1,
+            int logsPerPage = 10) 
         {
-            var driveLogs = GetDriveLogsInTimeInterval(startTime, endTime);
+            var driveLogs = GetDriveLogsInTimeInterval(startTime, endTime)
+                .Select(d => new DriveLogResponse(d.Id, d.Driver, d.Car, d.DrivingTime));
 
             driveLogs = FilterLogs(driveLogs, carModel, driverName);
             driveLogs = SortLogs(driveLogs, sortOrder);
             
-            return driveLogs;
+            return PaginatedLogs.ToPaginatedLogs(driveLogs, page, logsPerPage);
         }
 
-        public static IEnumerable<DriveLogAggregation> FilterLogs(
-            IEnumerable<DriveLogAggregation> driveLogs, 
+        public static IEnumerable<DriveLogResponse> FilterLogs(
+            IEnumerable<DriveLogResponse> driveLogs, 
             string carModel, 
             string driverName)
         {
@@ -72,51 +76,50 @@ namespace UssJuniorTest.Services
             {
                 driveLogs = driveLogs
                     .Where(
-                    d => d.Car.Model.Contains(carModel) 
-                    || d.Car.Manufacturer.Contains(carModel));
+                    d => d.car.Model.Contains(carModel) 
+                    || d.car.Manufacturer.Contains(carModel));
             }
             if (!string.IsNullOrEmpty(driverName))
             {
                 driveLogs = driveLogs
-                    .Where(d => d.Driver.Name.Contains(driverName));
+                    .Where(d => d.driver.Name.Contains(driverName));
             }
 
             return driveLogs;
         }
-
-        public static IEnumerable<DriveLogAggregation> SortLogs(
-            IEnumerable<DriveLogAggregation> driveLogs, 
+        public static IEnumerable<DriveLogResponse> SortLogs(
+            IEnumerable<DriveLogResponse> driveLogs, 
             SortState sortOrder)
         {
             switch (sortOrder)
             {
                 case SortState.DriverNameAsc:
                     driveLogs = driveLogs
-                        .OrderBy(s => s.Driver.Name);
+                        .OrderBy(s => s.driver.Name);
                     break;
                 case SortState.DriverNameDesc:
                     driveLogs = driveLogs
-                        .OrderByDescending(s => s.Driver.Name);
+                        .OrderByDescending(s => s.driver.Name);
                     break;
                 case SortState.CarModelAsc:
                     driveLogs = driveLogs
-                        .OrderBy(s => s.Car.Model);
+                        .OrderBy(s => s.car.Model);
                     break;
                 case SortState.CarModelDesc:
                     driveLogs = driveLogs
-                        .OrderByDescending(s => s.Car.Model);
+                        .OrderByDescending(s => s.car.Model);
                     break;
                 case SortState.CarManufacturerAsc:
                     driveLogs = driveLogs
-                        .OrderBy(s => s.Car.Manufacturer);
+                        .OrderBy(s => s.car.Manufacturer);
                     break;
                 case SortState.CarManufacturerDesc:
                     driveLogs = driveLogs
-                        .OrderByDescending(s => s.Car.Manufacturer);
+                        .OrderByDescending(s => s.car.Manufacturer);
                     break;
                 default:
                     driveLogs = driveLogs
-                        .OrderBy(s => s.DrivingTime);
+                        .OrderBy(s => s.drivingTime);
                     break;
             }
             return driveLogs;

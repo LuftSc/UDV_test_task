@@ -15,18 +15,15 @@ public class DriveLogController : ControllerBase
     }
 
     [HttpGet]
-    public List<DriveLogResponse> GetDriveLogsAggregation(
+    public PaginatedLogs GetDriveLogsAggregation(
         DateTime startTime, 
         DateTime endTime, 
         string carModel, 
         string driverName,
-        SortState sortOrder)
+        SortState sortOrder,
+        PaginationParams pp)
     {
-        var driveLogsAggregation = _driveLogService
-            .GetLogsAggregation(startTime, endTime, carModel, driverName, sortOrder);
-
-        return driveLogsAggregation
-            .Select(d => new DriveLogResponse(d.Id, d.Driver, d.Car, d.DrivingTime))
-            .ToList();
+        return _driveLogService
+            .GetLogsAggregation(startTime, endTime, carModel, driverName, sortOrder, pp.Page, pp.LogsPerPage);
     }
 }
