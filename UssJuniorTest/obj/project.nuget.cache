@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "2bkB7TrzvhgPOmKMWjlHJ2TIimC8K1qc7lGHB1h85B05Sa1g1j8hdR0n2birbaJ5FD+ejeytzFQ8LT5bbSdWNg==",
+  "success": true,
+  "projectFilePath": "H:\\UDV\\UDV_test_task\\UssJuniorTest\\UssJuniorTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\temap\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.15\\microsoft.windowsdesktop.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.15\\microsoft.netcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.15\\microsoft.aspnetcore.app.ref.7.0.15.nupkg.sha512",
+    "C:\\Users\\temap\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.15\\microsoft.netcore.app.host.win-x64.7.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}
