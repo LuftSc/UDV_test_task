@@ -1,4 +1,5 @@
 ﻿using UssJuniorTest.Core.Models;
+using static UssJuniorTest.Services.DriveLogService;
 
 namespace UssJuniorTest.Abstractions
 {
@@ -8,6 +9,7 @@ namespace UssJuniorTest.Abstractions
             DateTime startTime,
             DateTime endTime,
             string carModel = "",
-            string driverName = "");
+            string driverName = "",
+            SortState sortOrder = SortState.DriverNameAsc);
     }
 }
